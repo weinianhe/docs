@@ -1,0 +1,20 @@
+For basic net command [1] or in command prompt (press Win + R key and type cmd) enter
+net /?
+For parameterize references : [3]
+Ways of accessing windows via administrative tool and login see [2].
+
+Example Usage:
+Create mount of share folder on server 10.0.0.1 onto local machine e drive and presists every login.
+net use e: \\10.0.0.1\share /persistent:yes
+
+To remove mount drive e: off of current system
+net use e: /delete
+
+Create mount on e drive with login credentials connected to 10.0.0.1 share folder persists every login.
+net use e: /user:domain\username password \\10.0.0.1\share /persistent:yes
+
+Reference: 
+[1] https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/net-commands-on-operating-systems
+[2] https://learn.microsoft.com/en-us/windows-server/identity/securing-privileged-access/reference-tools-logon-types
+Reference: https://viterbiit.usc.edu/wp-content/uploads/2020/04/How-to-Use-Net-Use-Command.pdf
+[3] https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/gg651155(v=ws.11)
