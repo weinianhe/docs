@@ -1,0 +1,15 @@
+compmgmt.msc Computer Management
+regedit Registry
+eventvwr.msc Event Viewer
+devmgmt.msc Device Manager
+services.msc Services Manager
+
+rundll32.exe
+
+  
+res protocol [2]
+
+See possible msc file security flaws [1]
+[1] https://www.bleepingcomputer.com/news/security/new-grimresource-attack-uses-msc-files-and-windows-xss-flaw-to-breach-networks/
+
+[2] https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/jj710218(v=vs.85)
