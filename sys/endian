@@ -24,3 +24,32 @@ b'\x0b\x00\x00\x00'
 b'\x0b\x00\x00\x00'
 >>> pack("=I",11) # native indeed little-endian
 b'\x0b\x00\x00\x00'
+
+
+Format	C Type	Python type	Standard size	Notes
+x	pad byte	no value		
+c	char	string of length 1	1	
+b	signed char	integer	1	-3
+B	unsigned char	integer	1	-3
+?	_Bool	bool	1	-1
+h	short	integer	2	-3
+H	unsigned short	integer	2	-3
+i	int	integer	4	-3
+I	unsigned int	integer	4	-3
+l	long	integer	4	-3
+L	unsigned long	integer	4	-3
+q	long long	integer	8	(2), (3)
+Q	unsigned long long	integer	8	(2), (3)
+f	float	float	4	-4
+d	double	float	8	-4
+s	char[]	string		
+p	char[]	string		
+P	void *	integer		(5), (3)
+
+>>> record = 'raymond   \x32\x12\x08\x01\x08'
+>>> name, serialnum, school, gradelevel = unpack('<10sHHb', record)
+
+>>> from collections import namedtuple
+>>> Student = namedtuple('Student', 'name serialnum school gradelevel')
+>>> Student._make(unpack('<10sHHb', record))
+Student(name='raymond   ', serialnum=4658, school=264, gradelevel=8)
