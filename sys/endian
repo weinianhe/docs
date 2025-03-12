@@ -1,0 +1,26 @@
+python
+---
+import sys
+sys.byteorder
+
+x86-64 "little"
+
+https://docs.python.org/2/library/struct.html
+
+Character|Byte order|Size|Alignment
+
+@|native|native|native
+=|native|standard|none
+<|little-endian|standard|none
+>|big-endian|standard|none
+!|network (= big-endian)|standard|none
+
+from struct import *
+>>> pack(">I",11)  #big-endian
+b'\x00\x00\x00\x0b'
+>>> pack("<I",11) #little-endian
+b'\x0b\x00\x00\x00'
+>>> pack("@I",11) # native indeed little-endian
+b'\x0b\x00\x00\x00'
+>>> pack("=I",11) # native indeed little-endian
+b'\x0b\x00\x00\x00'
