@@ -59,3 +59,4 @@ Student(name='raymond   ', serialnum=4658, school=264, gradelevel=8)
 
 
 https://docs.python.org/3/library/winreg.html
+reg query
