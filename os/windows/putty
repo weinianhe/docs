@@ -5,3 +5,10 @@ regedit /e "%USERPROFILE%\Desktop\putty.reg" HKEY_CURRENT_USER\Software\SimonTat
 Powershell
 reg export HKCU\Software\SimonTatham\PuTTY\Sessions ([Environment]::GetFolderPath("Desktop") + "\putty-sessions.reg")
 reg export HKCU\Software\SimonTatham ([Environment]::GetFolderPath("Desktop") + "\putty.reg")
+
+
+cmd
+regedit /i putty-session.reg
+
+powershell
+reg import putty-session.reg
