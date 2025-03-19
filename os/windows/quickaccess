@@ -1,0 +1,43 @@
+To add (pin) a specific folder to the Quick Access List, specify the path to the folder in the the command:
+
+$quickaccess = new-object -com shell.application
+$quickaccess.Namespace("C:\PINFROM").Self.InvokeVerb("pintohome")
+to list available verbs
+$quickaccess.Namespace("C:\PINFROM").Self.Verbs()
+
+
+The list of items in the Quick Access pane is stored in the %AppData%\Microsoft\Windows\Recent\AutomaticDestinations\f01b4d95cf55d32a.automaticDestinations-ms file. To
+
+Any user profile folder can be pinned
+
+$quickaccess.Namespace("C:\Users\$($env:USERNAME)\AppData\Roaming\PINFROM").Self.InvokeVerb("pintohome")
+
+Remove (unpin) a folder from Quick Access:
+
+($QuickAccess.Namespace("shell:::{679f85cb-0220-4080-b29b-5540cc05aab6}").Items() | where {$_.Path -eq "C:\PINFROM"}).InvokeVerb("unpinfromhome")
+
+
+You can remove any of the profile library folders that are pinned to Quick Access by default:
+$quickaccess = new-object -com shell.application
+$results=$QuickAccess.Namespace("shell:::{679f85cb-0220-4080-b29b-5540cc05aab6}").Items()
+$DeleteDefaultItems = @("Desktop","Documents")
+($results| where {$_.name -in $DeleteDefaultItems}).InvokeVerb("unpinfromhome")
+
+$usergroups=(New-Object System.DirectoryServices.DirectorySearcher("(&(objectCategory=User)(samAccountName=$($env:username)))")).FindOne().GetDirectoryEntry().memberOf
+ $AddItems = @(
+        [pscustomobject]@{Name=Report;Path="c:\PINFROM"}
+  )
+ ForEach ($Item in $AddItems)
+        {          
+            if (($Item.Name -notin $results.Name) -and (Test-Path -Path $Item.path)) {
+            $quickaccess.Namespace($Item.path).Self.InvokeVerb("pintohome")
+         }
+        }
+
+
+Ref 
+
+https://woshub.com/add-remove-pinned-folders-quick-access-powershell-gpo/
+https://learn.microsoft.com/en-us/windows/win32/shell/folderitem-invokeverb
+https://learn.microsoft.com/en-us/windows/win32/shell/folderitem-verbs
+https://pcast01.github.io/Updated-Custom-Windows-Search-Files-Powershell/
