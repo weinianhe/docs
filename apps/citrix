@@ -14,3 +14,19 @@ Client Port	Server Port	Service
 49152 -65535/TCP	49152 -65535/TCP	FRS RPC (*)
 49152 -65535/TCP/UDP	88/TCP/UDP	Kerberos
 49152 -65535/TCP/UDP	445/TCP	SMB
+
+
+Connection Direction	Connector Appliance Port	External Port	Service
+Inbound	443/TCP	Any	Local Web UI
+Outbound	49152-65535/UDP	123/UDP	NTP
+Outbound	53, 49152-65535/TCP/UDP	53/TCP/UDP	DNS
+Outbound	67/UDP	68/UDP	DHCP and broadcast
+Outbound	49152 -65535/UDP	123/UDP	W32Time
+Outbound	49152 -65535/TCP	464/TCP/UDP	Kerberos password change
+Outbound	49152 -65535/TCP/UDP	389/TCP/UDP	LDAP
+Outbound	49152 -65535/TCP	3268/TCP	LDAP GC
+Outbound	49152 -65535/TCP/UDP	88/TCP/UDP	Kerberos
+Outbound	49152 -65535/TCP/UDP	445/TCP	SMB
+Outbound	137/UDP	137/UDP	NetBIOS Name Service
+Outbound	138/UDP	138/UDP	NetBIOS Datagram
+Outbound	139/TCP	139/TCP	NetBIOS Session
