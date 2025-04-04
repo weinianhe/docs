@@ -1,0 +1,16 @@
+netstat -ano | find /i 80
+  Current port open and find port any part of string contains 80
+
+The Cloud Connector must have a wide range of inbound and outbound ports open within the internal network. The following table lists the base set of open ports required.
+
+Client Port	Server Port	Service
+49152 -65535/UDP	123/UDP	W32Time
+49152 -65535/TCP	135/TCP	RPC Endpoint Mapper
+49152 -65535/TCP	464/TCP/UDP	Kerberos password change
+49152 -65535/TCP	49152-65535/TCP	RPC for LSA, SAM, Netlogon (*)
+49152 -65535/TCP/UDP	389/TCP/UDP	LDAP
+49152 -65535/TCP	3268/TCP	LDAP GC
+53, 49152 -65535/TCP/UDP	53/TCP/UDP	DNS
+49152 -65535/TCP	49152 -65535/TCP	FRS RPC (*)
+49152 -65535/TCP/UDP	88/TCP/UDP	Kerberos
+49152 -65535/TCP/UDP	445/TCP	SMB
