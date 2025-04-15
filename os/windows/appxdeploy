@@ -1,0 +1,9 @@
+https://www.advancedinstaller.com/application-packaging-training/msix-packaging/ebook/deployment-install-locations.html
+dism.exe
+
+https://superuser.com/questions/647927/install-windows-store-app-package-appx-for-all-users
+
+
+https://github.com/MicrosoftDocs/windows-powershell-docs/blob/main/docset/winserver2012r2-ps/appx/Get-AppxPackage.md
+
+ c:\windows\ccmcache 
