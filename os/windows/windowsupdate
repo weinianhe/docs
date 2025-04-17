@@ -1,0 +1,73 @@
+https://answers.microsoft.com/en-us/windows/forum/all/windows-10-cumulative-update-error-0x800f081f/5e513035-a9f1-46e2-87af-58fa890dc123
+[Suejin]
+Independent Advisor
+Replied on September 6, 2020
+Report abuse
+Hello SayanSarkar95,
+
+I'm Jin, a fellow Windows 10 user and an independent advisor.
+
+I can see that you are getting an error: 0x800f081f while trying to install an update.
+
+Here's a list of possible troubleshooting steps to help you fix the problem:
+
+**Run the Windows Update troubleshooter.
+You can refer to the link below on how to use the Windows Update troubleshooter:
+https://support.microsoft.com/help/4027322
+
+**Run Disk Clean up
+Use Disk Clean up to remove delete temporary files that might be causing the update.
+https://support.microsoft.com/help/4026616
+
+**Download via Microsoft Update Catalog:
+Manually download the update from Microsoft Update Catalog:
+https://www.catalog.update.microsoft.com/
+Select the exact update to download and install.
+
+**Run SFC & DISM
+Windows also has a built-in System File Check (SFC), kindly run SFC & DISM to fix any corrupted Windows System Files:
+https://support.microsoft.com/help/4026529
+
+**Clear Windows Update Cache & components:
+1. Run Command Prompt as Administrator and enter the commands below:
+
+Net Stop bits
+Net Stop wuauserv
+Net Stop appidsvc
+Net Stop cryptsvc
+Ren %systemroot%\SoftwareDistribution SoftwareDistribution.bak
+Ren %systemroot%s\system32\catroot2 catroot2.bak
+Net Start bits
+Net Start wuauserv
+Net Start appidsvc
+Net Start cryptsvc
+
+2. Restart your device and check if you'll be able to Update.
+
+**Remove WUServer and WIStatusServer from registry.
+1. Press Windows key + R, type regedit then hit Enter.
+2. Navigate to: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
+3. Look for WUServer and WIStatusServer in the right pane.
+4. If it's there delete them.
+
+**Use the Update Assistant:
+https://support.microsoft.com/help/3159635
+
+**Advanced Startup
+Use Advanced Startup as well to repair any Windows system files that might be causing for the update to fail.
+1. Open Settings
+2. Select Update & Security
+3. Click the Recovery tab.
+4. Look for Advanced Startup then hit Restart now.
+5. Once restarted, click Troubleshoot > Advanced Options > Startup Repair.
+6. Let it complete the process and see if Windows will be repaired.
+
+**Repair Windows using an installation media:
+As a last resort, use an installation media and use the Windows Repair feature to repair your copy of Windows.
+https://www.microsoft.com/software-download/win...
+1. Click the "Download tool now" button.
+2. Once downloaded run the MediaCreationTool2004.exe file.
+3. Accept the terms.
+4. Select Create an installation media, then hit Next.
+5. Proceed with the prompts.
+Once the installation media is created, double click on the file then on the Windows Setup screen, click on Repair your computer.
