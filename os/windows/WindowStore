@@ -1,0 +1,19 @@
+Check if RequirePrivateStoreOnly=1 in these locations:
+
+HKCU:\SOFTWARE\Policies\Microsoft\WindowsStore HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore
+
+If so delete the key or set it to 0. Then from start run wsreset.exe. It will auto open the store, if it’s still blocked close and reopen the store again.
+RemoveWindowStore =1 
+
+
+1. Group Policy Restrictions:
+Check Local Security Policy:
+Open secpol.msc and navigate to Application Control Policies > AppLocker > Packaged app Rules. If you find a rule with a "Deny" action for Microsoft Store, delete it. 
+Review Group Policy Editor:
+Open gpedit.msc and navigate to Computer Configuration > Administrative Templates > Windows Components > Store. Check for policies related to disabling the Store or blocking apps from the store, and ensure they are set to "Not Configured" or disabled. 
+Check for "Require Private Store" setting:
+This setting, if enabled via GPO, Intune, or registry, can also block the store. If it's enabled, either delete the related registry key or set its value to 0. 
+2. AppLocker Rules:
+If AppLocker is blocking access to the Store, you'll need to create a new rule that allows it. This can be done within the Group Policy Management Editor by navigating to AppLocker > Packaged app Rules and creating a new rule that allows the Microsoft Store app. 
+3. Service Issues:
+Ensure the "Application Identity service" is running. Open services.msc and start the service if it's not running. 
