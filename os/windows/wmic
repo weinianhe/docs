@@ -1,0 +1,3 @@
+wmic /node:COMPUTERNAME useraccount get name,sid
+wmic /node:REMOTECOMPUTERNAME path win32_userprofile  // list of profiles
+wmic /node:REMOTECOMPUTERNAME path win32_userprofile where sid="S-******" delete
