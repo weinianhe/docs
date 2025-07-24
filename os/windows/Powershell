@@ -1,1 +1,2 @@
 (Get-Item "C:\.dll").VersionInfo.ProductVersion
+Get-ChildItem -Path "C:\Your\Directory\Path" -Recurse -Filter "filename.ext"
