@@ -5,3 +5,6 @@ wmic /node:REMOTECOMPUTERNAME path win32_userprofile where localpath="C:\\Users\
 PowerShell
 
  Get-WmiObject -Class Win32_UserProfile -ComputerName computerName -Filter "LocalPath='C:\\Users\\profileName'"
+Get-WmiObject -ComputerName NWKPBAM7563273 -Class win32_userProfile | Where-Object {$_.LocalPath -like "C:\Users\ProfileName"} | ForEach-Object {$_.LocalPath}
+or $_.Delete()
+or |Remove-WmiObject
