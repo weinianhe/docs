@@ -1,0 +1,5 @@
+logoff 
+qwinsta.exe
+unverified: RDP 3389, RPC 135 dynamic port for RPC endpoint mapper.
+netsh firewall show state 
+netsh advfirewall show allprofiles.
