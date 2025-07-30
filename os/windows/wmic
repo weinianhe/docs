@@ -1,3 +1,7 @@
 wmic /node:COMPUTERNAME useraccount get name,sid
 wmic /node:REMOTECOMPUTERNAME path win32_userprofile  // list of profiles
 wmic /node:REMOTECOMPUTERNAME path win32_userprofile where sid="S-******" delete
+wmic /node:REMOTECOMPUTERNAME path win32_userprofile where localpath="C:\\Users\\profileName" Delete
+PowerShell
+
+ Get-WmiObject -Class Win32_UserProfile -ComputerName computerName -Filter "LocalPath='C:\\Users\\profileName'"
