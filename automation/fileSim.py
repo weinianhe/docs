@@ -48,11 +48,10 @@ def simulate_fileWrite(howManyRuns=30,variancesOfTime=600,ops="CopyFile",totalRu
 		executeTime = 0
 		if runCount == howManyRuns - 1 and totalTime < totalRunTime:
 			executeTime = totalRunTime - totalTime
-		elif totalTime > totalRunTime:
+		elif totalTime >= totalRunTime:
 			executeTime = 0 #just do it really quick to fulfill runsCount
 		else:
 			executeTime = random.randint(1,variancesOfTime)
-		timeCount.append(executeTime)
 		print(f"Total Run Time So Far: {totalTime}")
 		print(f"Start Typing of {runCount}:\n")		
 		with open(source, "w") as file:
@@ -64,13 +63,12 @@ def simulate_fileWrite(howManyRuns=30,variancesOfTime=600,ops="CopyFile",totalRu
 		copyFile(source,target)
 		print("End IO Operations.\n")
 
-		while not stop_event.is_set():
+		if not stop_event.is_set():
 			print(f"Start Thread Sleep: {executeTime} seconds.")
 			time.sleep(executeTime)
 			print("End Thread Sleep")
+		#if executeTime is 0 need to readjust to actualexecuteTime for better accounting
 		
-		if stop_event.is_set():
-			return
 def work_task():
 	#simulate_fileWrite(10,10,"CopyFile",60)
 	simulate_fileWrite(10,10,"CopyFile",0)
