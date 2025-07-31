@@ -2,13 +2,27 @@ import shutil
 import random
 import time
 import threading
+#import urllib.request
 
+import subprocess
+import socket
 
 #Production -> 24 Hours = 24*60*60 SEC total RunTime WITH var(60 SEC/1 MIN * 10 TIMES / 1 MIN) seconds * (30 RUNS * Time For Each Run)
 #Test -> 1 Minutes = 60 SEC total Runtime WITH var(10 SEC * 10 TIMES / 1 SEC) seconds * (10 RUNs * Time for each run)
 
 stop_event = threading.Event()
 
+def is_host_alive_ping(ip_address):
+	try:
+		runned = subprocess.run(['ping', '-n', '5','-4',ip_address],capture_output=True)
+		print(runned.stdout)
+		if runned.returncode == 0:
+			return True
+		else:
+			return False
+	except Exception as e:
+		print(e)
+		return False
 
 def copyFile(source,target):
 	try:
@@ -35,6 +49,25 @@ def simulate_run(numOfTimes=10,timeVariances=5):
 		algorithm(30,0.2)
 		time.sleep(random.randint(1,timeVariances))
 	print(f"Execute Time : {time.perf_counter() - startTime}")
+
+
+def is_host_alive_socket(ipStart,ipEnd):
+	timeout = 5 #seconds
+	port = 445
+	port = 139
+	ip = ipStart
+	try:
+		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.settimeout(timeout)
+		s.connect((ipStart,port))
+		s.close()
+		return True
+	except (socket.timeout, ConnectionRefusedError):
+		print(f"Connection Refused or TimeOut")
+		return False
+	except Exception as e:
+		print(f"Error :{e}")
+		return False
 
 def simulate_type():
 	parts = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
@@ -89,6 +122,10 @@ def simulate_fileWrite(howManyRuns=30,variancesOfTime=600,ops="CopyFile",totalRu
 		timeCount.append(time.perf_counter() - startTime - executeTime)
 
 def work_task():
+	ip_add = "10.51.77.68"
+	//print(f"Is Ip {ip_add} alive: {is_host_alive_ping(ip_add)}.\n")
+	print(f"Simulate SMB: {ip_add} {is_host_alive_socket(ip_add,ip_add)}.\n")
+
 	#1 Day 1 MINUTES with simulate_run(10,5) * 5 minutes
 	for runs in range(1,24): #24 hours
 		simulate_run(10*5,5)
