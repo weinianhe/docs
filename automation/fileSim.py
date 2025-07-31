@@ -4,6 +4,9 @@ import time
 import threading
 #import urllib.request
 #improve logging for analysis of the runned test, i.e. execution of simulation attach when is sleep when is running salt.
+#cpu temperature bound.
+#screensaver
+#network package
 
 import subprocess
 import socket
