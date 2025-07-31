@@ -20,12 +20,28 @@ def copyFile(source,target):
 		print(f"An error has occurred: {e}")
 
 
+def algorithm(cal2NLevel =2,saltSensitivityThreshold=0.5):
+	for x in range(1,int(saltSensitivityThreshold*100)):#take advantage multi-core threads
+		salt = random.random() * random.random() + random.random() / 2
+	if cal2NLevel == 0 or cal2NLevel ==1: 
+		return 1
+	
+	return algorithm(cal2NLevel -1,saltSensitivityThreshold) + algorithm(cal2NLevel-2,saltSensitivityThreshold)
+
+def simulate_run(numOfTimes=10,timeVariances=5):
+	startTime = time.perf_counter()
+	for x in range (1,numOfTimes):
+		print(f"Execute Time : {time.perf_counter() - startTime}")
+		algorithm(30,0.2)
+		time.sleep(random.randint(1,timeVariances))
+	print(f"Execute Time : {time.perf_counter() - startTime}")
+
 def simulate_type():
 	parts = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
 "ton","nian","anti","de","un","ed","ism","pre","auto","bio","homo","hetero","micro","marco","in","mis","non","re","semi","super","trans","able","er","ful","ing","ity","ation","ive","ative","less","ly","ment","ness","ous","s","es","y"]
 	endParagraphSymbol = ["...",".","!"]
 	paragraph = []
-	paragraphWordLength = 1024
+	paragraphWordLength = 1024*1024
 	for x in range(0,paragraphWordLength,1):
 		length = random.randint(1,20)
 		word = []
@@ -74,7 +90,8 @@ def simulate_fileWrite(howManyRuns=30,variancesOfTime=600,ops="CopyFile",totalRu
 
 def work_task():
 	#simulate_fileWrite(10,10,"CopyFile",60)
-	simulate_fileWrite(10,10,"CopyFile",60)
+	#simulate_fileWrite(10,10,"CopyFile",60)
+	simulate_run(10,5)
 
 # Main program
 
