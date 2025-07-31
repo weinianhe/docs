@@ -89,9 +89,17 @@ def simulate_fileWrite(howManyRuns=30,variancesOfTime=600,ops="CopyFile",totalRu
 		timeCount.append(time.perf_counter() - startTime - executeTime)
 
 def work_task():
+	#1 Day 1 MINUTES with simulate_run(10,5) * 5 minutes
+	for runs in range(1,24): #24 hours
+		simulate_run(10*5,5)
+		time.sleep(25*60) #sleep 30 MINUTES
+		simulate_run(10*3,5)
+		time.sleep(27*60) #sleep 30 MINUTES
+
+	#1 Day		100 RUNS, 30 MINUTES a piece variances, 24 HOURS			86400 secods
+	simulate_fileWrite(100,30*60,"CopyFile",24*60*60)
 	#simulate_fileWrite(10,10,"CopyFile",60)
-	#simulate_fileWrite(10,10,"CopyFile",60)
-	simulate_run(10,5)
+
 
 # Main program
 
