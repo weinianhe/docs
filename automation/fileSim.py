@@ -3,6 +3,7 @@ import random
 import time
 import threading
 #import urllib.request
+#improve logging for analysis of the runned test, i.e. execution of simulation attach when is sleep when is running salt.
 
 import subprocess
 import socket
