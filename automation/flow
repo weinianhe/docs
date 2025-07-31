@@ -1,3 +1,18 @@
+Flow:
+---
 Pre
 During
 Close
+
+Hierachy
+---
+One,
+High, 
+Sub
+
+Attribute
+---
+People: Partner, Org, Harmonization, Responsibility
+Function: Task,Indivdual
+Info: Flow, Chase, Exchange
+Operation: Budget,Time,Allocation,Priority,Algorithmic
