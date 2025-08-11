@@ -1,0 +1,11 @@
+edge
+c:\Program Files (x86)\microsoft\edge\application\msedge.exe
+Teams
+%LocalAppData%\Microsoft\Teams
+
+
+Microsoft Word
+Winword.exe
+C:\\Program Files\\Microsoft Office\\root\\Office16
+or
+C:\\Program Files (x86)\\Microsoft Office\\root\\Office16
