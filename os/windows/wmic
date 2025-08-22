@@ -11,3 +11,4 @@ or |Remove-WmiObject
 
 
 (Get-WmiObject Win32_Processor).LoadPercentage
+Get-WmiObject -class win32_processor -computername. | select-object -property [a-z]*
