@@ -12,3 +12,7 @@ or |Remove-WmiObject
 
 (Get-WmiObject Win32_Processor).LoadPercentage
 Get-WmiObject -class win32_processor -computername. | select-object -property [a-z]*
+
+wmic /namespace:\\root\wmi PATH MSAcpi_ThermalZoneTemperature get currenttemperature
+
+get-wmiobject -class msacpi_thermalzonetemperature -namespace "root/wmi"
