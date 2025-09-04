@@ -1,3 +1,9 @@
+https://www.partitionwizard.com/partitionmagic/powershell-windows-update.html
+Install-Module -Name PSWindowsUpdate -Force
+Get-WindowsUpdate or Get-WUList
+Get-WindowsUpdate -Install -KBArticleID KBNUMBER
+
+
 https://answers.microsoft.com/en-us/windows/forum/all/windows-10-cumulative-update-error-0x800f081f/5e513035-a9f1-46e2-87af-58fa890dc123
 [Suejin]
 Independent Advisor
