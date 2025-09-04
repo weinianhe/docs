@@ -1,3 +1,5 @@
+UsoClient.exe StartScan
+
 https://www.partitionwizard.com/partitionmagic/powershell-windows-update.html
 Install-Module -Name PSWindowsUpdate -Force
 Get-WindowsUpdate or Get-WUList
