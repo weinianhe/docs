@@ -1,0 +1,23 @@
+Key functionalities of Select-String:
+Pattern Matching: It searches for specified text patterns using regular expressions.
+Input Flexibility: It can search within individual strings, arrays of strings, or the contents of files.
+Output Details: By default, it returns MatchInfo objects for each match, including the filename, line number, and the entire line containing the match.
+Customization:
+-SimpleMatch: Treats the search pattern as a literal string instead of a regular expression.
+-Pattern: Specifies the pattern to search for (can be a single string or an array of strings).
+-Path: Specifies the path to files to search within. Wildcards are supported.
+-InputObject: Accepts objects as input, allowing you to search within their properties or converted string representations.
+-CaseSensitive: Performs a case-sensitive search.
+-NotMatch: Returns lines that do not contain the specified pattern.
+-Context: Displays lines before and/or after the matching line for context.
+-AllMatches: Finds all occurrences of the pattern within a line, not just the first one.
+-List: Stops searching in a file after the first match is found.
+Basic Example:
+Code
+
+"This is a sample string." | Select-String -Pattern "sample"
+This command will output the MatchInfo object for the line containing "sample".
+Searching in a file:
+Code
+
+Select-String -Path "C:\Logs\ErrorLog.txt" -Pattern "Error" -CaseSensitive
