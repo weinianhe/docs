@@ -16,3 +16,16 @@ Get-WmiObject -class win32_processor -computername. | select-object -property [a
 wmic /namespace:\\root\wmi PATH MSAcpi_ThermalZoneTemperature get currenttemperature
 
 get-wmiobject -class msacpi_thermalzonetemperature -namespace "root/wmi"
+
+
+se the following commands at a command prompt. Type the following to enable WMI traffic through the firewall.
+
+netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes
+
+Type the following command to disable WMI traffic through the firewall.
+
+netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=no
+
+Get-WmiObject -Class Win32_NetworkAdapterConfiguration -ComputerName RemoteComputerName | Select-Object Description, IPAddress, DNSHostName
+
+Get-NetFirewallRule
