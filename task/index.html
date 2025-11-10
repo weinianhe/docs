@@ -1,0 +1,45 @@
+<html>
+<body>
+<form id="myForm">
+<textarea id="textContent" name="textContent"></textarea>
+<input type=text" id="testLine" name="testLine" />
+<button type="submit">submit</button>
+</form>
+<script type="text/javascript">
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', event => {
+  event.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(form);
+
+  for (var [key, value] of formData.entries()) { 
+  console.log(key, value);
+}
+
+});
+</script>
+
+
+
+
+//const formDataObj = Object.fromEntries(formData.entries());
+  //console.log(formDataObj);
+/*
+  const jsonString = JSON.stringify(formObject);
+
+  // Send the JSON string to a server using the Fetch API
+  const response = await fetch('/api/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: jsonString,
+  });
+
+  const result = await response.json();
+  console.log(result);
+  */
+});
+</body>
+</html>
